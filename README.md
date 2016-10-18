@@ -8,3 +8,5 @@ odległościową) najlepiej (w kontekście ceny) jest wybrać dla kupna biletu j
 
 Aktualna taryfa KZKGOP jest na stronie
 http://www.kzkgop.com.pl/strony/p-1-cennik-oplat.html
+
+Projekt w ramach Koduj dla Polski (zob. np. http://kodujdlapolski.pl).
