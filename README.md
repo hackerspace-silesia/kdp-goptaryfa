@@ -6,6 +6,9 @@ http://rozklady.kzkgop.com.pl/rozklad/pokaz_kurs.php?id_kursu=1741348&nr_przysta
 ) pozwoli wybrać dwa przystanki z trasy i wskaże, którą taryfę (czasową czy
 odległościową) najlepiej (w kontekście ceny) jest wybrać dla kupna biletu jednorazowego.
 
+W dalszej kolejności można zaimplementować wygodniejszą formę używania niż skryptozakładka,
+czyli dodatki (addon) dla przeglądarek.
+
 Aktualna taryfa KZKGOP jest na stronie
 http://www.kzkgop.com.pl/strony/p-1-cennik-oplat.html
 
