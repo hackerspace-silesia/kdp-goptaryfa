@@ -12,4 +12,7 @@ czyli dodatki (addon) dla przeglądarek.
 Aktualna taryfa KZKGOP jest na stronie
 http://www.kzkgop.com.pl/strony/p-1-cennik-oplat.html
 
+W międzyczasie zmieniła się strona KZK GOP; stworzona skryptozakładka działała (i działa nadal)
+dla starej wersji strony KZK GOP. Prace nad nową wersją odbywają się w branchu new-website.
+
 Projekt w ramach Koduj dla Polski (zob. np. http://kodujdlapolski.pl).
