@@ -2,10 +2,10 @@ function TicketAdvisor(timetable) {
   this.timetable = $(timetable)
   this.rows = this.timetable.find("tbody tr:not([id])");
   this.stops = [];
-  this.cls_stops = "stopsChbx";
-  this.timeClass = "stopsTime";
-  this.distanceClass = "stopsDistance";
-  this.infoClass = "stopsInfo";
+  this.cls_stops = "stopChbx";
+  this.timeClass = "stopTime";
+  this.distanceClass = "stopDistance";
+  this.infoClass = "stopInfo";
 }
 
 TicketAdvisor.prototype.extendTableHeader = function() {
@@ -17,22 +17,28 @@ TicketAdvisor.prototype.extendTableHeader = function() {
 TicketAdvisor.prototype.extendTableBody = function() {
   var id_string = "stopId";
   var rowInput = null;
+  var stopRow = null;
 
   for (var i = 0; i < this.rows.length; i++) {
     // add checkbox
-    rowInput = "<td style=\"text-align: center;\">" +
+    rowInput = $("<td style=\"text-align: center;\">" +
                  "<input class=\"" + this.cls_stops + "\" id=\"" + id_string + i +
-               "\" type=\"checkbox\"></td>";
-    $(rowInput).prependTo(this.rows[i]);
+               "\" type=\"checkbox\"></td>");
+
+    stopRow = $(this.rows[i]);
+    stopRow.data("id", i)
+
+    stopRow.addClass("stop")
+    $(rowInput).prependTo(stopRow);
 
     // add time class
-    $(this.rows[i]).find("td:nth-child(4)").addClass(this.timeClass);
+    stopRow.find("td:nth-child(4)").addClass(this.timeClass);
 
     // add distance class
-    $(this.rows[i]).find("td:nth-child(5)").addClass(this.distanceClass);
+    stopRow.find("td:nth-child(5)").addClass(this.distanceClass);
 
     // add info class
-    $(this.rows[i]).find("td:nth-child(6)").addClass(this.infoClass);
+    stopRow.find("td:nth-child(6)").addClass(this.infoClass);
   }
 }
 
@@ -41,8 +47,31 @@ TicketAdvisor.prototype.extendTable = function() {
   this.extendTableBody();
 }
 
-TicketAdvisor.prototype.collectDate = function() {
-  var data = {};
-  var stops = this.timetable.find("tbody tr." + this.cls_stops);
+// convert (+ x.xx min) format to float
+TicketAdvisor.prototype.strToFloat = function(string) {
+  var regexp = /[^0-9.]/g;
+  var result = string.replace(regexp, "");
+  return parseFloat(result);
+}
+
+TicketAdvisor.prototype.normalize = function(value) {
+  return (value !== '') ? this.strToFloat(value) : 0;
+};
+
+TicketAdvisor.prototype.collectData = function() {
+  var data = null;
+  var stops = $(".stop");
+  var temp_string = "";
+
+  for (var i = 0; i < stops.length; i++) {
+    data = {};
+    data["id"] = $(stops[i]).data("id");
+    temp_string = $(stops[i]).find("." + this.distanceClass + " small").text();
+    data["distance"] = this.normalize(temp_string);
+    temp_string = $(stops[i]).find("." + this.timeClass + " small").text();
+    data["time"] = this.normalize(temp_string);
+
+    this.stops.push(data);
+  }
 
 }
