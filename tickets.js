@@ -16,8 +16,8 @@ TicketAdvisor.prototype.extendTableBody = function() {
 
   for (var i = 0; i < rows.length; i++) {
     rowInput = "<td style=\"text-align: center;\">" +
-			           "<input class=\"" + cls_stops + "\" id=\"" + id_string + i +
-			         "\" type=\"checkbox\"></td>";
+                 "<input class=\"" + cls_stops + "\" id=\"" + id_string + i +
+               "\" type=\"checkbox\"></td>";
     $(rowInput).prependTo(rows[i]);
   }
 }
