@@ -18,8 +18,9 @@ TicketAdvisor.prototype.extendTableBody = function() {
   var id_string = "stopId";
   var rowInput = null;
   var stopRow = null;
+  var i = 0
 
-  for (var i = 0; i < this.rows.length; i++) {
+  for (; i < this.rows.length; i++) {
     // add checkbox
     rowInput = $("<td style=\"text-align: center;\">" +
                  "<input class=\"" + this.cls_stops + "\" id=\"" + id_string + i +
@@ -39,7 +40,7 @@ TicketAdvisor.prototype.extendTableBody = function() {
 
     // add info class
     stopRow.find("td:nth-child(6)").addClass(this.infoClass);
-  }
+  };
 }
 
 TicketAdvisor.prototype.extendTable = function() {
@@ -56,22 +57,38 @@ TicketAdvisor.prototype.strToFloat = function(string) {
 
 TicketAdvisor.prototype.normalize = function(value) {
   return (value !== '') ? this.strToFloat(value) : 0;
-};
+}
 
 TicketAdvisor.prototype.collectData = function() {
   var data = null;
   var stops = $(".stop");
   var temp_string = "";
+  var i = 0;
+  var zone = 1;
 
-  for (var i = 0; i < stops.length; i++) {
+  for (; i < stops.length; i++) {
     data = {};
     data["id"] = $(stops[i]).data("id");
+    data["zone"] = zone;
+
     temp_string = $(stops[i]).find("." + this.distanceClass + " small").text();
     data["distance"] = this.normalize(temp_string);
+
     temp_string = $(stops[i]).find("." + this.timeClass + " small").text();
     data["time"] = this.normalize(temp_string);
 
+    temp_string = $(stops[i]).find("." + this.infoClass).text();
+
+    if (temp_string.match(/Strefowy/)) {
+      zone++;
+    }
+
     this.stops.push(data);
   }
-
 }
+
+// Check
+var ta = new TicketAdvisor('.table.table-striped.table-bordered');
+ta.extendTable();
+ta.collectData();
+console.table(ta.stops);
