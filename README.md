@@ -16,3 +16,8 @@ W międzyczasie zmieniła się strona KZK GOP; stworzona skryptozakładka dział
 dla starej wersji strony KZK GOP. Prace nad nową wersją odbywają się w branchu new-website.
 
 Projekt w ramach Koduj dla Polski (zob. np. http://kodujdlapolski.pl).
+
+
+# Testy
+
+Aby uruchomić testy wystarczy wpisać `yarn test`
