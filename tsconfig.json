@@ -10,7 +10,7 @@
     "noEmitHelpers": true,
     "importHelpers": true,
     "strictNullChecks": true,
-     "lib" : ["es2015", "es2015.iterable", "dom"]
+    "lib": ["es2017", "dom", "dom.iterable"]
   },
   "exclude": [
     "node_modules",

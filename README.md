@@ -21,3 +21,7 @@ Projekt w ramach Koduj dla Polski (zob. np. http://kodujdlapolski.pl).
 # Testy
 
 Aby uruchomić testy wystarczy wpisać `yarn test`
+
+# Kompilacja
+
+Aby uzyskać końcowy plik JSa robimy `yarn build` i wykorzystujemy plik `dist/bundle.js`
