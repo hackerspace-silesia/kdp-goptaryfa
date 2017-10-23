@@ -95,7 +95,14 @@ export class TicketAdvisor {
     return (value !== '') ? this.strToFloat(value) : 0;
   }
 
-  private
+  // TODO: finish this method
+  private checkboxListener() {
+    const checkboxes = $('.stopChbx:checked');
+
+    if ( checkboxes.length == 2 ) {
+      // method(checkboxes);
+    }
+  }
 }
 
 // ---------------------------------------------------------------------
