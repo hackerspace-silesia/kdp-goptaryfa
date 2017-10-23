@@ -2,7 +2,7 @@ module.exports = {
     entry: "./src/tickets.ts",
     output: {
         filename: "bundle.js",
-        path: __dirname + "/dist"
+        path: __dirname + "/../dist"
     },
     devtool: "source-map",
     resolve: {

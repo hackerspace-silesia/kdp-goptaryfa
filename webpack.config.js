@@ -7,4 +7,7 @@ switch (process.env.NODE_ENV) {
     case 'testing':
         module.exports = require('./config/webpack.test');
         break;
+    default:
+        module.exports = require('./config/webpack.prod');
+        break;
 }
