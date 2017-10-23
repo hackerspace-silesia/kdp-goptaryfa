@@ -87,6 +87,10 @@ export class TicketAdvisor {
     }
   }
 
+  public getStops() {
+    return this.stops;
+  }
+
   private normalize(value) {
     return (value !== '') ? this.strToFloat(value) : 0;
   }
@@ -94,6 +98,7 @@ export class TicketAdvisor {
 
 // ---------------------------------------------------------------------
 
-const tickets = new TicketAdvisor('table');
+const tickets = new TicketAdvisor('.table.table-striped.table-bordered');
 tickets.extendTable();
 tickets.collectData();
+console.table(this.getStops());

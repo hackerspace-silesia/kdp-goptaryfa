@@ -1,0 +1,7 @@
+node_modules/
+*.swp
+**/.DB_Store
+**/.vs
+**/.vscode
+**/.vscode/tasks.json
+yarn.lock
