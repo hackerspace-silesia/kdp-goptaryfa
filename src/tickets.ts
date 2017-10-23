@@ -101,4 +101,4 @@ export class TicketAdvisor {
 const tickets = new TicketAdvisor('.table.table-striped.table-bordered');
 tickets.extendTable();
 tickets.collectData();
-console.table(this.getStops());
+console.table(tickets.getStops());
