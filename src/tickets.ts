@@ -28,7 +28,7 @@ export class TicketAdvisor {
     for (; i < this.rows.length; i++) {
       // add checkbox
       rowInput = $('<td style="text-align: center;">' +
-        '<input class="' + this.clsStops + '" id="' + idString + i +
+        '<input class="' + this.clsStops + '" id="' + idString + '#' + i +
         '" type="checkbox"></td>');
 
       stopRow = $(this.rows[i]);
@@ -94,6 +94,8 @@ export class TicketAdvisor {
   private normalize(value) {
     return (value !== '') ? this.strToFloat(value) : 0;
   }
+
+  private
 }
 
 // ---------------------------------------------------------------------
