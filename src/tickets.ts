@@ -63,8 +63,8 @@ export class TicketAdvisor {
   }
 
   private extendTableBody() {
+    const stopCheck = e => this.handleStopCheck(e);
     let checkbox: Element | null;
-    let rowChildren: Element[];
     let i: number = 0;
 
     this.rows.forEach( row => {
@@ -81,13 +81,11 @@ export class TicketAdvisor {
         checkbox = document.querySelector(`input[data-stop="${i}"]`);
 
         if (checkbox) {
-          checkbox.addEventListener('change', function(e) {
-            return this.addToCheckedStops(e);
-          }.bind(this, checkbox));
+          checkbox.addEventListener('change', stopCheck.bind(this, checkbox));
         };
 
         // add class names to the columns
-        rowChildren = Array.from(row.children);
+        const rowChildren = Array.from(row.children);
         rowChildren[3].classList.add(this.timeClass);
         rowChildren[4].classList.add(this.distanceClass);
         rowChildren[5].classList.add(this.infoClass);
@@ -109,7 +107,7 @@ export class TicketAdvisor {
     row.insertAdjacentHTML('afterbegin', emptyRow);
   }
 
-  private addToCheckedStops(stop: Element) {
+  private handleStopCheck(stop: Element) {
     const stopId = Number(stop.getAttribute('data-stop'));
 
     if (!this.checkedStops.includes(stopId)) {
@@ -121,6 +119,9 @@ export class TicketAdvisor {
       } else if (stopId > this.checkedStops[1]) {
         this.checkedStops[1] = stopId;
       }
+    } else {
+      const index = this.checkedStops.indexOf(stopId);
+      this.checkedStops.splice(index, 1);
     }
 
     this.updateCheckboxes();
@@ -153,7 +154,6 @@ export class TicketAdvisor {
 }
 
 // Test
-
 const tickets = new TicketAdvisor('.table.table-striped.table-bordered');
 tickets.extendTable();
 tickets.collectData();
