@@ -13,7 +13,7 @@ export class TicketAdvisor {
     this.rows = this.timetable.querySelectorAll('tbody tr:not([id])');
     this.stops = [];
   }
-  
+
   public extendTable() {
     this.extendTableHeader();
     this.extendTableBody();
@@ -132,7 +132,7 @@ export class TicketAdvisor {
 
     Array.from(stopCheckboxes).forEach((chbx) => {
       let stopId = Number(chbx.getAttribute('data-stop'));
-      if (!this.checkedStops.includes(stopId)) 
+      if (!this.checkedStops.includes(stopId))
          chbx.checked = false;
     });
   }
@@ -147,7 +147,7 @@ export class TicketAdvisor {
     return parseFloat(result);
   }
 
-  private extractTextValue(parent: Element, selector: string) { 
+  private extractTextValue(parent: Element, selector: string) {
     const element = parent.querySelector(selector);
     return element ? element.textContent || '' : '';
   }
