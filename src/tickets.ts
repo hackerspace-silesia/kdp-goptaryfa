@@ -125,7 +125,7 @@ export class TicketAdvisor {
     }
 
     this.updateCheckboxes();
-    //console.log(this.getCheckedStops());
+    console.log(this.getCheckedStops());
   }
 
   private updateCheckboxes() {
