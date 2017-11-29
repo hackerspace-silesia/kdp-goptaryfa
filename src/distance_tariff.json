@@ -1,0 +1,56 @@
+{
+  "zoneTimeTariff": [
+    {
+      "czasStart": 0,
+      "czasEnd": 15,
+      "cena": 3.10
+    },
+    {
+      "czasStart": 15,
+      "czasEnd": 30,
+      "cena": 3.70
+    },
+    {
+      "czasStart": 30,
+      "czasEnd": 999999999,
+      "cena": 4.60
+    }
+  ],
+  "distanceTariff": [
+    {
+      "kmStart": 0,
+      "kmEnd": 1,
+      "cena": 2.20
+    },
+    {
+      "kmStart": 1,
+      "kmEnd": 2,
+      "cena": 2.80
+    },
+    {
+      "kmStart": 2,
+      "kmEnd": 5,
+      "cena": 3.10
+    },
+    {
+      "kmStart": 5,
+      "kmEnd": 9,
+      "cena": 3.70
+    },
+    {
+      "kmStart": 9,
+      "kmEnd": 14,
+      "cena": 4.20
+    },
+    {
+      "kmStart": 14,
+      "kmEnd": 20,
+      "cena": 4.40
+    },
+    {
+      "kmStart": 20,
+      "kmEnd": 999999999,
+      "cena": 4.60
+    }
+  ]
+}

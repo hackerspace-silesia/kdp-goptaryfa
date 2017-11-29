@@ -20,6 +20,7 @@
   },
   "scripts": {
     "test": "karma start karma.config.js",
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "webpack --watch"
   }
 }
