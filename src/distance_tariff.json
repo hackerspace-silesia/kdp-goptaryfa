@@ -3,17 +3,20 @@
     {
       "startTime": 0,
       "endTime": 15,
-      "fare": 3.10
+      "fare": 3.10,
+      "zones": 1
     },
     {
       "startTime": 15,
       "endTime": 30,
-      "fare": 3.70
+      "fare": 3.70,
+      "zones": 2
     },
     {
       "startTime": 30,
       "endTime": 999999999,
-      "fare": 4.60
+      "fare": 4.60,
+      "zones": 999999999
     }
   ],
   "distanceTariff": [
