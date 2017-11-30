@@ -1,56 +1,56 @@
 {
   "zoneTimeTariff": [
     {
-      "czasStart": 0,
-      "czasEnd": 15,
-      "cena": 3.10
+      "startTime": 0,
+      "endTime": 15,
+      "fare": 3.10
     },
     {
-      "czasStart": 15,
-      "czasEnd": 30,
-      "cena": 3.70
+      "startTime": 15,
+      "endTime": 30,
+      "fare": 3.70
     },
     {
-      "czasStart": 30,
-      "czasEnd": 999999999,
-      "cena": 4.60
+      "startTime": 30,
+      "endTime": 999999999,
+      "fare": 4.60
     }
   ],
   "distanceTariff": [
     {
-      "kmStart": 0,
-      "kmEnd": 1,
-      "cena": 2.20
+      "startDistance": 0,
+      "endDistance": 1,
+      "fare": 2.20
     },
     {
-      "kmStart": 1,
-      "kmEnd": 2,
-      "cena": 2.80
+      "startDistance": 1,
+      "endDistance": 2,
+      "fare": 2.80
     },
     {
-      "kmStart": 2,
-      "kmEnd": 5,
-      "cena": 3.10
+      "startDistance": 2,
+      "endDistance": 5,
+      "fare": 3.10
     },
     {
-      "kmStart": 5,
-      "kmEnd": 9,
-      "cena": 3.70
+      "startDistance": 5,
+      "endDistance": 9,
+      "fare": 3.70
     },
     {
-      "kmStart": 9,
-      "kmEnd": 14,
-      "cena": 4.20
+      "startDistance": 9,
+      "endDistance": 14,
+      "fare": 4.20
     },
     {
-      "kmStart": 14,
-      "kmEnd": 20,
-      "cena": 4.40
+      "startDistance": 14,
+      "endDistance": 20,
+      "fare": 4.40
     },
     {
-      "kmStart": 20,
-      "kmEnd": 999999999,
-      "cena": 4.60
+      "startDistance": 20,
+      "endDistance": 999999999,
+      "fare": 4.60
     }
   ]
 }
