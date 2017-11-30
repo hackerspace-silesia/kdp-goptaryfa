@@ -153,9 +153,3 @@ export class TicketAdvisor {
     return element ? element.textContent || '' : '';
   }
 }
-
-// Test
-const tickets = new TicketAdvisor('.table.table-striped.table-bordered');
-tickets.extendTable();
-tickets.collectData();
-console.table(tickets.getStops());
