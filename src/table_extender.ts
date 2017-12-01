@@ -1,9 +1,12 @@
-import {DataCollector} from './data_collector';
+import { DataCollector, Stop } from './data_collector';
+import { Tariff, Result, TariffAdvisor } from './tariff_advisor';
+import * as tariff from './distance_tariff.json';
+console.log(tariff);
 
 export class TableExtender {
   private timetable: Element;
   private rows: NodeListOf<Element>;
-  private stops: Object[];
+  private stops: Stop[];
   private checkedStops: number[] = [];
   private clsStops = 'stopChbx';
 
@@ -30,9 +33,8 @@ export class TableExtender {
   private extendTableBody(): void {
     const stopCheck = e => this.handleStopCheck(e);
     let checkbox: Element | null;
-    let i: number = 0;
 
-    this.rows.forEach(row => {
+    this.rows.forEach((row, i) => {
       if (Array.from(row.classList).includes('text-muted')) {
         this.addBlankColumn(row);
       } else {
@@ -50,8 +52,6 @@ export class TableExtender {
         rowChildren[3].classList.add('stopTime');
         rowChildren[4].classList.add('stopDistance');
         rowChildren[5].classList.add('stopInfo');
-
-        i++;
       }
     });
   }
@@ -72,7 +72,9 @@ export class TableExtender {
     const stopId = Number(stop.getAttribute('data-stop'));
     this.performCheck(stopId);
     this.updateCheckedRows();
-    console.log(this.checkedStops);
+    if (this.checkedStops.length == 2) {
+      TariffAdvisor.perform(this.stops, this.checkedStops, tariff);
+    }
   }
 
   private performCheck(stopId: number): void {
