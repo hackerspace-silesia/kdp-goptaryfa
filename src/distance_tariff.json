@@ -1,0 +1,59 @@
+{
+  "zoneTimeTariff": [
+    {
+      "startTime": 0,
+      "endTime": 15,
+      "fare": 3.10,
+      "zones": 1
+    },
+    {
+      "startTime": 15,
+      "endTime": 30,
+      "fare": 3.70,
+      "zones": 2
+    },
+    {
+      "startTime": 30,
+      "endTime": 999999999,
+      "fare": 4.60,
+      "zones": 999999999
+    }
+  ],
+  "distanceTariff": [
+    {
+      "startDistance": 0,
+      "endDistance": 1,
+      "fare": 2.20
+    },
+    {
+      "startDistance": 1,
+      "endDistance": 2,
+      "fare": 2.80
+    },
+    {
+      "startDistance": 2,
+      "endDistance": 5,
+      "fare": 3.10
+    },
+    {
+      "startDistance": 5,
+      "endDistance": 9,
+      "fare": 3.70
+    },
+    {
+      "startDistance": 9,
+      "endDistance": 14,
+      "fare": 4.20
+    },
+    {
+      "startDistance": 14,
+      "endDistance": 20,
+      "fare": 4.40
+    },
+    {
+      "startDistance": 20,
+      "endDistance": 999999999,
+      "fare": 4.60
+    }
+  ]
+}

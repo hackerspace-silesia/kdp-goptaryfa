@@ -67,8 +67,7 @@ export class TicketAdvisor {
     let checkbox: Element | null;
     let i: number = 0;
 
-    this.rows.forEach( row => {
-
+    this.rows.forEach(row => {
       if (Array.from(row.classList).includes('text-muted')) {
         this.addBlankColumn(row);
       } else {
@@ -95,14 +94,14 @@ export class TicketAdvisor {
     });
   }
 
-  private addInputColumn(row:Element, i:number) {
+  private addInputColumn(row: Element, i: number) {
     const inputRow = `<td style="text-align: center;">
                         <input class="${this.clsStops}" data-stop="${i}" type="checkbox" />
                       </td>`
     row.insertAdjacentHTML('afterbegin', inputRow);
   }
 
-  private addBlankColumn(row:Element) {
+  private addBlankColumn(row: Element) {
     const emptyRow = `<td style="text-align: center;"></td>`
     row.insertAdjacentHTML('afterbegin', emptyRow);
   }
@@ -114,7 +113,8 @@ export class TicketAdvisor {
       if (this.checkedStops.length < 2) {
         this.checkedStops.push(stopId);
         this.checkedStops.sort();
-      } else if (stopId < this.checkedStops[1]) {
+      }
+      else if (stopId < this.checkedStops[1]) {
         this.checkedStops[0] = stopId;
       } else if (stopId > this.checkedStops[1]) {
         this.checkedStops[1] = stopId;
@@ -125,6 +125,7 @@ export class TicketAdvisor {
     }
 
     this.updateCheckboxes();
+    console.log(this.getCheckedStops());
   }
 
   private updateCheckboxes() {
@@ -133,7 +134,7 @@ export class TicketAdvisor {
     Array.from(stopCheckboxes).forEach((chbx) => {
       let stopId = Number(chbx.getAttribute('data-stop'));
       if (!this.checkedStops.includes(stopId))
-         chbx.checked = false;
+        chbx.checked = false;
     });
   }
 
@@ -152,9 +153,3 @@ export class TicketAdvisor {
     return element ? element.textContent || '' : '';
   }
 }
-
-// Test
-const tickets = new TicketAdvisor('.table.table-striped.table-bordered');
-tickets.extendTable();
-tickets.collectData();
-console.table(tickets.getStops());

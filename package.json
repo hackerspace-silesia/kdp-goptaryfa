@@ -1,7 +1,7 @@
 {
   "name": "kdp-goptaryfa",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "repository": "git@github.com:hackerspace-silesia/kdp-goptaryfa.git",
   "author": "Kamil Gałuszka <galuszkak@gmail.com>",
   "license": "MIT",
@@ -20,6 +20,7 @@
   },
   "scripts": {
     "test": "karma start karma.config.js",
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "webpack --watch"
   }
 }
