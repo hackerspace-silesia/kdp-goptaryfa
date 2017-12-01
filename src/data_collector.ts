@@ -1,8 +1,18 @@
+export interface Stop {
+  "data-stop": number;
+  zone: number;
+  distance: number;
+  time: number;
+}
+
 export class DataCollector {
-  public static perform(): Object[] {
-    const data: Object = {};
+  public static perform(): Stop[] {
+    const data: Stop = {'data-stop': 0,
+                        'zone': 0,
+                        'distance': 0,
+                        'time': 0};
     const stopRows: NodeListOf<Element> = document.querySelectorAll('.stop');
-    let stops: Object[] = [];
+    let stops: Stop[] = [];
     let text: string;
     let zone: number = 1;
 
