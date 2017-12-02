@@ -1,7 +1,5 @@
 import { DataCollector, Stop } from './data_collector';
-import { Tariff, Result, TariffAdvisor } from './tariff_advisor';
-import * as tariff from './distance_tariff.json';
-console.log(tariff);
+import { Tariff, Result, TariffAdvisor, TariffWithInfo } from './tariff_advisor';
 
 export class TableExtender {
   private timetable: Element;
@@ -70,10 +68,17 @@ export class TableExtender {
 
   private handleStopCheck(stop: Element): void {
     const stopId = Number(stop.getAttribute('data-stop'));
+    let advisedTariff: TariffWithInfo | null = null;
+
     this.performCheck(stopId);
     this.updateCheckedRows();
+
     if (this.checkedStops.length == 2) {
-      TariffAdvisor.perform(this.stops, this.checkedStops, tariff);
+      advisedTariff = TariffAdvisor.perform(this.stops, this.checkedStops);
+    }
+
+    if (advisedTariff) {
+      console.log(advisedTariff);
     }
   }
 
@@ -102,5 +107,25 @@ export class TableExtender {
       let stopId = Number(chbx.getAttribute('data-stop'));
       if (!this.checkedStops.includes(stopId)) chbx.checked = false;
     });
+  }
+
+  private showInfoBox(travelInfo: TariffWithInfo): void {
+    
+  }
+
+  private prepareInfoBox(travel: TariffWithInfo): string {
+    const tariffUrl = 'http://www.kzkgop.com.pl/strony/p-1-cennik-oplat.html';
+    let ticketType: string;
+    let price: number;
+    if (travel.tariff == Tariff.Time) {
+      ticketType = 'czasowo-strefowego';
+      price = travel.zoneTimeTariffCost;
+    } else {
+      ticketType = 'odległościowego';
+      price = travel.distanceTariffCost;
+    }
+
+    return `Twoja podróż będzie trwała ${travel.travelInfo.time} min. Przebędziesz ${travel.travelInfo.distance} km na terenie ${travel.travelInfo.zones.size} miast (gmin).<br/>
+            Zgodnie z informacjami zwartymi w <a href="${tariffUrl}">cenniku opłat</a> skorzystaj z biletu <strong>${ticketType}</strong> w cenie ${price} zł.<br/>`
   }
 }
