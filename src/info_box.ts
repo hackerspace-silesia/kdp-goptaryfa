@@ -25,7 +25,7 @@ export class InfoBox {
 
     if (travel.tariff == Tariff.Time) {
       ticketType = 'czasowo-strefowej';
-      price = timeTicketPrice; 
+      price = timeTicketPrice;
     } else {
       ticketType = 'odległościowej';
       price = distanceTicketPrice;
@@ -36,9 +36,9 @@ export class InfoBox {
     } else {
       adviseInfo = `Skorzystaj z biletu w taryfie <strong>${ticketType}</strong> w cenie <strong>${price} zł.</strong><br/><br/>`;
     }
-    
+
     const defaultInfo = `Twoja podróż będzie trwała ${travel.travelInfo.time} min. Przebędziesz ${travel.travelInfo.distance.toFixed(2)} km na terenie ${zoneCount} ${zonesInfo}.<br/>`
-    const ticketInfo = `Cena biletu w <a href="${tariffUrl}">taryfie odległościowej</a> to ${distanceTicketPrice} zł.<br/>Cena biletu w <a href="${tariffUrl}">taryfie czasowo-strefowej</a> to ${timeTicketPrice} zł.<br/>`
+    const ticketInfo = `Cena biletu w <a href="${tariffUrl}">taryfie odległościowej</a> to ${distanceTicketPrice} zł.<br/>Cena biletu w <a href="${tariffUrl}">taryfie strefowo-czasowej</a> to ${timeTicketPrice} zł.<br/>`
 
     return `<tr id="adviseInfo" style="background-color: #98FB98; font-size: 1.2em;"><td colspan="6">${adviseInfo}${defaultInfo}${ticketInfo}</td></tr>`
   }
