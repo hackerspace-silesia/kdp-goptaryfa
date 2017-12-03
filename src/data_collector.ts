@@ -1,9 +1,11 @@
 export class DataCollector {
   public static perform(): GopTariff.Stop[] {
-    const data: GopTariff.Stop = {'data-stop': 0,
-                        'zone': 0,
-                        'distance': 0,
-                        'time': 0};
+    const data: GopTariff.Stop = {
+      'data-stop': 0,
+      'zone': 0,
+      'distance': 0,
+      'time': 0
+    };
     const stopRows: NodeListOf<Element> = document.querySelectorAll('.stop');
     let stops: GopTariff.Stop[] = [];
     let text: string;

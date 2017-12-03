@@ -22,17 +22,17 @@ export class TariffAdvisor {
         result.zones.add(stop.zone);
       }
     });
-    return this.advise(result);
+    return this.chooseTariff(result);
   }
 
-  private static advise(result: GopTariff.Result): GopTariff.TariffWithInfo {
+  private static chooseTariff(result: GopTariff.Result): GopTariff.TariffWithInfo {
     const distanceTariff = tariffs.distanceTariff as GopTariff.DistanceTariff[];
     const zoneTimeTariff = tariffs.zoneTimeTariff as GopTariff.ZoneTimeTariff[];
 
     const distanceTariffCost = this.findTariffCost(result.distance, distanceTariff);
     const timeTariffCost = this.findTariffCost(result.time, zoneTimeTariff);
     const zones = result.zones.size;
-    
+
     const zoneTariff = zoneTimeTariff.find(tariff => {
       return tariff.zones == zones;
     });
@@ -53,6 +53,6 @@ export class TariffAdvisor {
   private static decider(timeTariffCost: number, zoneTariffCost: number, distanceTariffCost: number, result: GopTariff.Result): GopTariff.TariffWithInfo {
     const zoneTimeTariffCost = zoneTariffCost < timeTariffCost ? zoneTariffCost : timeTariffCost;
     const resultTariff = zoneTimeTariffCost < distanceTariffCost ? Tariff.Time : Tariff.Distance;
-    return {tariff: resultTariff, zoneTimeTariffCost, distanceTariffCost, travelInfo: result};
+    return { tariff: resultTariff, zoneTimeTariffCost, distanceTariffCost, travelInfo: result };
   }
 }
