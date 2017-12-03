@@ -1,18 +1,11 @@
-export interface Stop {
-  "data-stop": number;
-  zone: number;
-  distance: number;
-  time: number;
-}
-
 export class DataCollector {
-  public static perform(): Stop[] {
-    const data: Stop = {'data-stop': 0,
+  public static perform(): GopTariff.Stop[] {
+    const data: GopTariff.Stop = {'data-stop': 0,
                         'zone': 0,
                         'distance': 0,
                         'time': 0};
     const stopRows: NodeListOf<Element> = document.querySelectorAll('.stop');
-    let stops: Stop[] = [];
+    let stops: GopTariff.Stop[] = [];
     let text: string;
     let zone: number = 1;
 

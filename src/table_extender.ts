@@ -1,10 +1,12 @@
-import { DataCollector, Stop } from './data_collector';
-import { Tariff, Result, TariffAdvisor, TariffWithInfo } from './tariff_advisor';
+import { DataCollector } from './data_collector';
+import { TariffAdvisor } from './tariff_advisor';
+import { distanceTariff } from '*.json';
+import { Tariff } from './enums';
 
 export class TableExtender {
   private timetable: Element;
   private rows: NodeListOf<Element>;
-  private stops: Stop[];
+  private stops: GopTariff.Stop[];
   private checkedStops: number[] = [];
   private clsStops = 'stopChbx';
 
@@ -17,7 +19,6 @@ export class TableExtender {
     this.extendTableHeader();
     this.extendTableBody();
     this.stops = DataCollector.perform();
-    console.table(this.stops);
   }
 
   private extendTableHeader(): void {
@@ -68,7 +69,7 @@ export class TableExtender {
 
   private handleStopCheck(stop: Element): void {
     const stopId = Number(stop.getAttribute('data-stop'));
-    let advisedTariff: TariffWithInfo | null = null;
+    let advisedTariff: GopTariff.TariffWithInfo | null = null;
 
     this.performCheck(stopId);
     this.updateCheckedRows();
@@ -77,8 +78,9 @@ export class TableExtender {
       advisedTariff = TariffAdvisor.perform(this.stops, this.checkedStops);
     }
 
+    this.removeInfoBox();
     if (advisedTariff) {
-      console.log(advisedTariff);
+      this.showInfoBox(advisedTariff);
     }
   }
 
@@ -86,7 +88,15 @@ export class TableExtender {
     if (!this.checkedStops.includes(stopId)) {
       if (this.checkedStops.length < 2) {
         this.checkedStops.push(stopId);
-        this.checkedStops.sort();
+        this.checkedStops.sort((a: number, b: number): number => { 
+            if (a > b) {
+              return 1;
+            } else if (a < b) {
+              return -1;
+            } else {
+              return 0;
+            }
+        });
       } else if (stopId < this.checkedStops[1]) {
         this.checkedStops[0] = stopId;
       } else if (stopId > this.checkedStops[1]) {
@@ -109,23 +119,43 @@ export class TableExtender {
     });
   }
 
-  private showInfoBox(travelInfo: TariffWithInfo): void {
-    
+  private showInfoBox(travelInfo: GopTariff.TariffWithInfo): void {
+    const infoRow = document.querySelector('.info.stop') as Element;
+    const infoBox = this.prepareInfoBox(travelInfo);
+    infoRow.insertAdjacentHTML('beforebegin', infoBox);
   }
 
-  private prepareInfoBox(travel: TariffWithInfo): string {
-    const tariffUrl = 'http://www.kzkgop.com.pl/strony/p-1-cennik-oplat.html';
-    let ticketType: string;
-    let price: number;
-    if (travel.tariff == Tariff.Time) {
-      ticketType = 'czasowo-strefowego';
-      price = travel.zoneTimeTariffCost;
-    } else {
-      ticketType = 'odległościowego';
-      price = travel.distanceTariffCost;
+  private removeInfoBox(): void {
+    const infoBox = document.querySelector('#adviseInfo') as Element;
+    if (infoBox) {
+      const parentNode = infoBox.parentNode as Node;
+      parentNode.removeChild(infoBox);
     }
+  }
 
-    return `Twoja podróż będzie trwała ${travel.travelInfo.time} min. Przebędziesz ${travel.travelInfo.distance} km na terenie ${travel.travelInfo.zones.size} miast (gmin).<br/>
-            Zgodnie z informacjami zwartymi w <a href="${tariffUrl}">cenniku opłat</a> skorzystaj z biletu <strong>${ticketType}</strong> w cenie ${price} zł.<br/>`
+  private prepareInfoBox(travel: GopTariff.TariffWithInfo): string {
+    const tariffUrl = 'http://www.kzkgop.com.pl/strony/p-1-cennik-oplat.html';
+    let ticketType, price, adviseInfo: string;
+    const timeTicketPrice = travel.zoneTimeTariffCost.toFixed(2);
+    const distanceTicketPrice = travel.distanceTariffCost.toFixed(2);
+    if (travel.tariff == Tariff.Time) {
+      ticketType = 'czasowo-strefowej';
+      price = timeTicketPrice; 
+    } else {
+      ticketType = 'odległościowej';
+      price = distanceTicketPrice;
+    }
+    const zoneCount = travel.travelInfo.zones.size;
+    const zonesInfo = zoneCount == 1 ? 'miasta (gminy)' : 'miast (gmin)';
+    if (timeTicketPrice == distanceTicketPrice) {
+      adviseInfo = `Skorzystaj z biletu w cenie <strong>${price} zł.</strong> Koszt biletu jest identyczny w obu taryfach.<br/><br>`;
+    } else {
+      adviseInfo = `Skorzystaj z biletu w taryfie <strong>${ticketType}</strong> w cenie <strong>${price} zł.</strong><br/><br/>`;
+    }
+    
+    const defaultInfo = `Twoja podróż będzie trwała ${travel.travelInfo.time} min. Przebędziesz ${travel.travelInfo.distance.toFixed(2)} km na terenie ${zoneCount} ${zonesInfo}.<br/>`
+    const ticketInfo = `Cena biletu w <a href="${tariffUrl}">taryfie odległościowej</a> to ${distanceTicketPrice} zł.<br/>Cena biletu w <a href="${tariffUrl}">taryfie czasowo-strefowej</a> to ${timeTicketPrice} zł.<br/>`
+
+    return `<tr id="adviseInfo" style="background-color: #98FB98; font-size: 1.2em;"><td colspan="6">${adviseInfo}${defaultInfo}${ticketInfo}</td></tr>`
   }
 }
