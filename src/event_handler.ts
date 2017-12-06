@@ -11,12 +11,10 @@ export class EventHandler {
   }
 
   public add(checkbox: Element): void {
-    const stopCheck = e => this.handleStopCheck(e);
-
-    checkbox.addEventListener('change', stopCheck.bind(this, checkbox));
+    checkbox.addEventListener('change', () => this.handleStopCheck(checkbox));
   }
 
-  private handleStopCheck(stop: Element): void {
+  private handleStopCheck(stop: Element): any {
     const stopId = Number(stop.getAttribute('data-stop'));
     let advisedTariff: GopTariff.TariffWithInfo | null = null;
 
