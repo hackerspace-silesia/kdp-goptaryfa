@@ -1,8 +1,8 @@
-import { TariffAdvisor } from './tariff_advisor';
-import { DataCollector } from './data_collector';
-import { InfoBox } from './info_box';
+import TariffAdvisor from './tariff_advisor';
+import DataCollector from './data_collector';
+import InfoBox from './info_box';
 
-export class EventHandler {
+export default class EventHandler {
   private stops: GopTariff.Stop[];
   private checkedStops: number[] = [];
 

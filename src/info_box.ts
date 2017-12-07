@@ -1,6 +1,6 @@
 import { Tariff } from './enums';
 
-export class InfoBox {
+export default class InfoBox {
   public static showInfoBox(travelInfo: GopTariff.TariffWithInfo): void {
     const infoRow = document.querySelector('.info.stop') as Element;
     const infoBox = this.prepareInfoBox(travelInfo);

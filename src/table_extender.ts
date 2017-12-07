@@ -1,6 +1,6 @@
-import { EventHandler } from './event_handler';
+import EventHandler from './event_handler';
 
-export class TableExtender {
+export default class TableExtender {
   private timetable: Element;
   private rows: NodeListOf<Element>;
   private checkedStops: number[] = [];

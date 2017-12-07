@@ -1,7 +1,7 @@
 import * as tariffs from './distance_tariff.json';
 import { Tariff } from './enums';
 
-export class TariffAdvisor {
+export default class TariffAdvisor {
   public static perform(stops: GopTariff.Stop[], checkedStopsIds: number[]): GopTariff.TariffWithInfo | null {
     if (checkedStopsIds.length != 2) return null;
 

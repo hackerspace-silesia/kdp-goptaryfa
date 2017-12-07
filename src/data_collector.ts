@@ -1,4 +1,4 @@
-export class DataCollector {
+export default class DataCollector {
   public static perform(): GopTariff.Stop[] {
     const data: GopTariff.Stop = {
       'data-stop': 0,
