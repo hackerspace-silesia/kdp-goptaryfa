@@ -2,18 +2,18 @@
   "zoneTimeTariff": [
     {
       "start": 0,
-      "end": 15,
+      "end": 20,
       "fare": 3.10,
       "zones": 1
     },
     {
-      "start": 15,
-      "end": 30,
+      "start": 20,
+      "end": 40,
       "fare": 3.70,
       "zones": 2
     },
     {
-      "start": 30,
+      "start": 40,
       "end": 999999999,
       "fare": 4.60,
       "zones": 999999999
