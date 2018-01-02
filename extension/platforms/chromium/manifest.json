@@ -1,6 +1,6 @@
 {
   "name": "GOP Taryfa",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 2,
   "description": "Helps users of the silesian public transport choose between tariffs",
   "homepage_url": "https://github.com/hackerspace-silesia/kdp-goptaryfa",
@@ -15,5 +15,5 @@
   "background": {
     "scripts": ["js/background.js"]
   },
-  "permissions":["https://rj.kzkgop.com.pl/rozklady/*"]
+  "permissions":["https://rj.kzkgop.com.pl/rozklady/*/*/*/*/*"]
 }
