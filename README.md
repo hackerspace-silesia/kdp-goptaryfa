@@ -3,7 +3,7 @@
 Wtyczka do przeglądarek pomagająca wybrać, która taryfa KZK GOP bardziej opłaca się dla danego przejazdu.
 
 Aktualna taryfa KZKGOP jest na stronie
-http://www.kzkgop.com.pl/strony/p-1-cennik-oplat.html
+http://www.kzkgop.com.pl/strony/p-1-cennik-od-1012018-r.html
 
 Projekt w ramach Koduj dla Polski (zob. np. http://kodujdlapolski.pl).
 
