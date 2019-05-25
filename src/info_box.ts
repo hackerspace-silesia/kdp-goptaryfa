@@ -16,7 +16,7 @@ export default class InfoBox {
   }
 
   private static prepareInfoBox(travel: GopTariff.TariffWithInfo): string {
-    const tariffUrl = 'http://www.kzkgop.com.pl/strony/p-1-cennik-od-1012018-r.html';
+    const tariffUrl = 'https://www.metropoliaztm.pl/pl/s/cennik';
     const timeTicketPrice = travel.zoneTimeTariffCost.toFixed(2);
     const distanceTicketPrice = travel.distanceTariffCost.toFixed(2);
     const zoneCount = travel.travelInfo.zones.size;
