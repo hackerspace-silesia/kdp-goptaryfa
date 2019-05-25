@@ -9,10 +9,10 @@
     "32": "icons/32.png"
   },
   "content_scripts": [
-   { "matches": ["https://rj.kzkgop.com.pl/rozklady/*/*/*/*/*"], "js": ["js/background.js"], "run_at": "document_end" }
+   { "matches": ["https://rj.metropoliaztm.pl/rozklady/*/*/*/*/*"], "js": ["js/background.js"], "run_at": "document_end" }
   ],
   "background": {
     "scripts": ["js/background.js"]
   },
-  "permissions":["https://rj.kzkgop.com.pl/rozklady/*/*/*/*/*"]
+  "permissions":["https://rj.metropoliaztm.pl/rozklady/*/*/*/*/*"]
 }
