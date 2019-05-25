@@ -13,7 +13,7 @@ Wtyczka jest dostępna pod następującymi adresami:
 * Chrome: https://chrome.google.com/webstore/detail/gop-taryfa/hiebekpfadlkbhmlaoffcijmipmbainb
 * Firefox: https://addons.mozilla.org/addon/gop-taryfa/
 
-Po zainstalowaniu wtyczki i wejściu na stronę ze szczegółowym rozkładem jazdy (np. https://rj.kzkgop.com.pl/rozklady/2-7/28722/0/159633/73992722/#73992722) obok nazw przystanków wyświetlą się checkbox'y. Po zaznaczeniu przystanku początkowego i końcowego zostaniemy poinformowani, która taryfa będzie tańsza.
+Po zainstalowaniu wtyczki i wejściu na stronę ze szczegółowym rozkładem jazdy (np. https://rj.metropoliaztm.pl/rozklady/2-7/43579/0/159633/98376783/#98376783) obok nazw przystanków wyświetlą się checkbox'y. Po zaznaczeniu przystanku początkowego i końcowego zostaniemy poinformowani, która taryfa będzie tańsza.
 ![Przykład](screenshot.png?raw=true "Przykład")
 
 # Wskazówki dla developerów
